@@ -46,6 +46,42 @@
                 </div>
             </div>
         </nav>
-    
+
+        <!-- Upload -->
+
+        <div class="container" style="margin-top:5%">
+            <div class="d-flex justify-content-center">
+                <h2>Upload CSV File</h2>
+            </div>
+            <!-- this is just here to center the 2nd d-flex so that it's not unnecessarily large-->
+            <div class="d-flex justify-content-center">
+                <div class="d-flex w-50 justify-content-center" style="background-color: #dadada; border-color: #474c55; border-width:2px; border-style: solid; border-radius:25px; padding:5rem; margin-top:50px">
+                    <input type="file" class="form-control" id="uploadedCSV" style="width:300px;">
+                    <button class="btn btn-custom" style="height:40px; margin-left:10px;" data-bs-toggle="modal" data-bs-target="#uploadModal">Upload CSV</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+
+        <div class="modal fade" id="uploadModal" tabindex="-1" ara-labelledby="uploadModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="uploadModalLabel">Upload Status</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-body" id="uploadModalBody">CSV file was successfully added to the database!</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.reload()" aria-label="Upload Another CSV">Upload Another CSV</button>
+                        <button type="button" class="btn btn-custom" onclick="window.location.href='analysis.html'" style="height:auto">View QC Analytics</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 </body>
 </html>
