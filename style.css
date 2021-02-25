@@ -1,0 +1,64 @@
+@font-face{
+    font-family: Futura-Std-Book;
+    src:url("fonts/Futura-Std-Book.otf")
+}
+
+@font-face{
+    font-family: Futura-Std;
+    src:url("fonts/Futura-Std-Medium.otf")
+}
+
+@font-face{
+    font-family: Futura-Std-Heavy;
+    src:url("fonts/Futura-Std-Heavy.otf")
+}
+
+@font-face{
+    font-family: Futura-Std-Bold;
+    src:url("fonts/Futura-Std-Bold.otf")
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    background-color: #F8F9FA;
+    /* background-color: #474C55; */
+    font-family: Futura-Std-Book;
+}
+
+body h1{
+    font-family: Futura-Std-Heavy;
+}
+
+.btn-custom{
+    background-color: #F26925;
+    color:white;
+    height:50px;
+}
+
+.btn-custom:hover{
+    background-color: #b34108;
+    color: white;
+}
+
+.navbar{
+    padding:.8rem;
+}
+
+.navbar img {
+    padding-right:.7rem;
+    padding-top:.7rem;
+    padding-bottom:.7rem;
+}
+
+.navbar-nav li{
+    padding-right: 20px;
+}
+.nav-link {
+    font-size:larger;
+    font-family: Futura-Std;
+}
+
+.padding {
+    padding: 1rem;
+}
