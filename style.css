@@ -22,7 +22,23 @@ html, body{
     height: 100%;
     width: 100%;
     background-color: #F8F9FA;
+    /* background-color: #474C55; */
     font-family: Futura-Std-Book;
+}
+
+body h1{
+    font-family: Futura-Std-Heavy;
+}
+
+.btn-custom{
+    background-color: #F26925;
+    color:white;
+    height:50px;
+}
+
+.btn-custom:hover{
+    background-color: #b34108;
+    color: white;
 }
 
 .navbar{
