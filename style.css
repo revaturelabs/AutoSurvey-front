@@ -58,3 +58,7 @@ body h1{
     font-size:larger;
     font-family: Futura-Std;
 }
+
+.padding {
+    padding: 1rem;
+}
