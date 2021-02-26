@@ -55,15 +55,15 @@
             <div class="container-fluid">
                <div class="row align-items-center">
                     <div class="col d-flex justify-content-center" style="padding-top: 6%;">
-                        <ul class="nav nav-tabs">
-                            <li><a href="#">Search By Date</a></li>
-                            <li><a href="#">Search By Batch</a></li>
+                        <ul class="nav nav-tabs" style="border-bottom: 2px solid #DDD;">
+                            <li id="nav1-tab1" style="background-color: #EEE;"><a href="#" onclick="doSelectBackground(1,1)">Search By Date</a></li>
+                            <li id="nav1-tab2" style="background-color: #FFF;"><a href="#" onclick="doSelectBackground(1,2)">Search By Batch</a></li>
                         </ul>
                     </div>
                     <div class="col d-flex justify-content-center" style="padding-top: 5%">
-                        <ul class="nav nav-tabs">
-                            <li><a href="#">Search By Date</a></li>
-                            <li><a href="#">Search By Batch</a></li>
+                        <ul class="nav nav-tabs" style="border-bottom: 3px solid #DDD;">
+                            <li id="nav2-tab1" style="background-color: #EEE;"><a href="#" onclick="doSelectBackground(2,1)">Search By Date</a></li>
+                            <li id="nav2-tab2" style="background-color: #FFF;"><a href="#" onclick="doSelectBackground(2,2)">Search By Batch</a></li>
                         </ul>
                     </div>
                 </div><br>
@@ -73,15 +73,17 @@
                         <img src="img/tempgraph1.png" width=40%>
                     </div>
                     <div class="col d-flex justify-content-center" style="margin-bottom: 15px;">
-                        <select">
-                            <option data-rate="0" value="" selected>Select Location</option>
-                        </select><br>
-                        <select">
-                            <option data-rate="0" value="" selected>Select Batch</option>
-                        </select><br>
-                        <select">
-                            <option data-rate="0" value="" selected>Select Week</option>
-                        </select><br>
+                        <div>
+                            <select>
+                                <option data-rate="0" value="" selected>Select Location</option>
+                            </select><br><br>
+                            <select>
+                                <option data-rate="0" value="" selected>Select Batch</option>
+                            </select><br><br>
+                            <select>
+                                <option data-rate="0" value="" selected>Select Week</option>
+                            </select><br><br>
+                        </div>
                     </div>
                 </div><br>
 
@@ -106,4 +108,15 @@
         </div>
     
 </body>
+
+<script>
+    function doSelectBackground(tablistnum, tabnum) {
+        let thistab = document.getElementById(`nav${tablistnum}-tab${tabnum}`)
+        let othertab = document.getElementById(`nav${tablistnum}-tab${tabnum == 1 ? 2 : 1}`)
+
+        thistab.style.backgroundColor = "#EEE"
+        othertab.style.backgroundColor = "#FFF"
+    }
+
+</script>
 </html>
