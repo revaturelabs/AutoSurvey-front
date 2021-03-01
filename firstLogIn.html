@@ -18,7 +18,7 @@
         <!-- Custom Styling -->
         <link href="style.css" rel="stylesheet">
 </head>
-<body class="">
+<body class="body-bg">
 
      <!-- Navigation -->
      <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top py-0">
@@ -44,6 +44,7 @@
                         <br/>
                         <input id="checkPasswordInput" type="password" class="form-control" style="padding:5px" placeholder="Re-type Password" area-described-by="passHelp" minlength="8" maxlength="20" required>
                         <div class='invalid-feedback'>Passwords must match.</div>
+                        <br/>
                         <small id="passHelp form-text text-muted">
                             <ul>
                                 <li>Your password:</li>
@@ -86,14 +87,25 @@
                 event.preventDefault();
                 event.stopPropagation();
             }
-
+            else if (form.checkValidity()) {
+                setPassword();
+            }
             form.classList.add('was-validated')
             }, false);
     }
 
     // Function to run when user presses 'Set Password' button
 
-    function login() {
+    function setPassword() {
+        let user = {};
+        let url = "firstLogin.html?firstName=Nicholas&lastName=Rens&email=nicholasrens@test.net";
+        let queryParams = new URLSearchParams((url.split("?")[1]));
+        for (let query of queryParams) {
+            console.log(query);
+            user[query[0]] = query[1];
+        }
+    
+        
         //collecting user inputs
         let password = document.getElementById('newPasswordInput').value;
 
@@ -103,16 +115,12 @@
 
         // check to make sure passwords match
         if (password == passwordCheck) {
+            user.password = password;
+            console.log(user);
             // create object of password (and email?) -  how will we know who the user is?
-            let user = {
-                email : "email",
-                password : password 
-            }
-
-            // console check
-            console.log(user)
+           
             console.log(JSON.stringify(user));
-
+            /*
             // restful enpoint tbd
             let url = "";
             // send AJAX call to pback end to create a new user 
@@ -132,7 +140,7 @@
                     // Alert that they've been registered? Or simply take them to the index? 
                     window.location.assign('index.html');
                 }
-            }
+            }*/
         }
 
 
