@@ -75,11 +75,8 @@ body h1{
 }
 
 .body-bg{
+    background:url('img/index-bg.png') center repeat-y;
     /* background-image:url('img/index-bg-2.png');  */
-    background-image:url('img/index-bg.png');
-    background-position: center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-size: 100% auto;
+    min-height: 100vh;
 }
