@@ -19,7 +19,6 @@
 }
 
 html, body{
-    /* height: 100%; */
     width: 100%;
     background-color: #F8F9FA;
     /* background-color: #474C55; */
@@ -84,4 +83,3 @@ body h1{
     -o-background-size: cover;
     background-size: cover;
 }
-
