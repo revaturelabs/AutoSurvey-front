@@ -22,7 +22,16 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>        
+
+        <!-- JQuery Datepicker-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $( function() {
+                 $( "#datepicker" ).datepicker();
+            } );
+        </script>
 </head>
 <body>
 
@@ -57,18 +66,18 @@
                <div class="row">
                     <nav>
                         <div class="col d-flex justify-content-center nav nav-tabs" id="nav-tab" role="tablist">
-                          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Search by Date</button>
-                          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Search by Batch</button>
+                          <button class="nav-link active" id="nav-date-tab" data-bs-toggle="tab" data-bs-target="#nav-date" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Search by Date</button>
+                          <button class="nav-link" id="nav-batch-tab" data-bs-toggle="tab" data-bs-target="#nav-batch" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Search by Batch</button>
                         </div>
                       </nav>
                 </div><br>
 
                 <div class="row">
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <img src="img/tempgraph1.png" width=93% style="margin-left:1vw">
+                        <div class="tab-pane fade show active" id="nav-date" role="tabpanel" aria-labelledby="nav-date-tab">
+                            <div id="datepicker"></div>
                         </div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="tab-pane fade" id="nav-batch" role="tabpanel" aria-labelledby="nav-batch-tab">
                             <select style="width:95%;font-size: x-large;">
                                 <option data-rate="0" value="" selected>Select Location</option>
                             </select><br><br><br>
@@ -103,4 +112,5 @@
         </div>
     
 </body>
+
 </html>
