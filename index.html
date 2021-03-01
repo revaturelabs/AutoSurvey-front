@@ -16,9 +16,10 @@
         crossorigin="anonymous"></script>
 
         <!-- Custom Styling -->
-        <link href="style.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet"> 
 </head>
-<body>
+
+<body class="body-bg">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top py-0">
@@ -32,23 +33,25 @@
             <div class="row text-center justify-content-center">
 
                 <!-- Associates Panel/Survey Link -->
-                <div class="col-md-8 col-xl-6 col-sm-12 col-xs-12 bubble">
+                <div class="col-md-8 col-xl-6 col-sm-12 col-xs-12 bubble" style="width: 500px;">
                     <h1 class="display-4" style="padding-bottom:10px;">Associates</h1>
                     <p class="lead">Give feedback on last week's training.</p>
                     <hr class="my-4">
                     <br>
                     <button class="btn btn-lg btn-custom" onclick="window.location.href='survey.html'" style="height:auto; margin-top:25px;">Take the QC Survey</button> 
+                    <br>
+                    <br>
                 </div>
 
                 <!-- QC Panel/Login -->
-                <div class="col-md-8 col-xl-6 offset-xl-1 col-sm-12 col-xs-12 bubble" style="margin-top: 15px; max-width: 500px; border-color:#474C55; border-width:2px; border-style:solid; border-radius:50px; background-color:#e9e9e9; padding:50px;">
+                <div class="col-md-8 col-xl-6 offset-xl-1 col-sm-12 col-xs-12 bubble" style="width: 500px;">
                     <h1 class="display-4" style="padding-bottom:10px;">QC Team</h1>
-                    <p class="lead">View survey analytics & upload new data.</p>
+                    <p class="lead">View survey analytics & upload data.</p>
                     <hr class="my-4">
                     <div class="text-center">
                         <form class="form" style="margin:auto; max-width: 360px;">
-                            <input style="margin-bottom:10px;" type="text" id="email" class="form-control" placeholder="Email" required>
-                            <input type="password" id="password" class="form-control" placeholder="Password" required>
+                            <input style="margin-bottom:10px; border-radius:5px; border-color:#474c5583; border-style:solid;" type="text" id="email" class="form-control" placeholder="Email" required>
+                            <input type="password" style="border-radius:5px; border-color:#474c557a; border-style:solid;" id="password" class="form-control" placeholder="Password" required>
                         </form>
                     </div>
                     <br>
