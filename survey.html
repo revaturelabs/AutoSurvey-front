@@ -17,63 +17,125 @@
 
         <!-- Custom Styling -->
         <link href="style.css" rel="stylesheet">
+
+        <style>
+          .form-check{
+            padding-top: 10px;
+          }
+
+          .satisfactionQuestionGroup{
+            display: inline-block;
+            text-align:center;
+          }
+
+          .satisfactionQuestionGroup label{
+            display: block;
+          }
+        </style>
 </head>
 <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top py-0">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top py-0">
             <div class="container-fluid">
-                <a class="navbar-brand"> <img src="img/rev-logo.png" width="200px"></a>
+                <a class="navbar-brand"> <img src="img/rev-logo-alt.png" width="200px"></a>
             </div>
         </nav>
 
-        <div class="container">
-            <div id="textboxquestion">
+        <div class="d-flex justify-content-center">
+          <h1 class="display-4" style="padding-bottom:10px; padding-top: 40px;">Training Feedback</h1>
+        </div>
+
+        <div class="container" style="width: 800px;">
+          <hr>
+          <br>
+          <p>Thank you for being a part of Revature. We hope you are having as much fun attending as we do organizing.</p>
+          <p>We want to hear your feedback so we can keep improving our logistics and content. Please fill this quick survey out and let us know your thoughts. Please note that you will be using this SAME link EVERY week to give your feedback about training, so you may want to bookmark or pin this URL in your Slack channel.</p>
+          <p>Survey responses are only accessible by the QC team and are collected anonymously unless you fill in your information below.</p>
+          <p>Please note this survey is for the last completed week of training (e.g. if you are currently in Week 4, please fill out the survey for Week 3.)</p>
+          <p style="color:red;">* Required</p>
+          <br>
+        </div>
+        <div class="container bubble" style="width:800px;">
+            <div id="emailQuestion">
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Question 1. What do you think of this Survey Page?</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="name" class="form-label">Name (Optional)</label>
+                    <input type="text" class="form-control" id="name" style="max-width: 400px;">
                   </div>
             </div>
 
-           <br> <hr> <br>
+           <!-- <br> <hr> <br> -->
 
-            <div id="radioquestion">
-                <label>Question 2. Which one of the following is most frustrating?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      JUnit 5 Breaking Everything
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      Javascript
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                    <label class="form-check-label" for="flexRadioDefault3">
-                     Javascript
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-                    <label class="form-check-label" for="flexRadioDefault4">
-                      When you accidentally mispelled something and then are left wondering why nothing is working
-                    </label>
-                  </div>
+            <div id="emailQuestion">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email (Optional)</label>
+                <input type="text" class="form-control" id="email" style="max-width: 400px;">
+              </div>
             </div>
 
             <br> <hr> <br>
-            <div id="dropquestion">
-                <label>Question 3. Which of the following is correct?</label>
-                <select class="form-select form-select-sm mb-5" aria-label=".form-select-sm example">
-                    <option selected>Select One</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                    <option value="4">Four</option>
-                  </select>
+
+            <div id="locationQuestion">
+              <div class="mb-3">
+                <label for="location" class="form-label">Where is your training location? <span style="color: red">*</span></label>
+                <select class="form-control" id="location" style="max-width: 400px;"></select>
+              </div>
+            </div>
+
+            <!-- <br> <hr> <br> -->
+
+            <div id="batchQuestion">
+              <div class="mb-3">
+                <label for="batch" class="form-label">What batch are you in? <span style="color: red">*</span></label>
+                <select class="form-control" id="batch" style="max-width: 400px;"></select>
+              </div>
+            </div>
+
+            <br> <hr> <br>
+
+            <div id="weekQuestion">
+                <label for="week" class="form-label">What was your most recently completed week of training? (Extended batches start with Week A, normal batches start with Week 1)<span style="color:red">*</span></label>
+                <select class="form-control" id="week" style="max-width: 400px;">
+                  <option value="" selected disabled>Week</option>
+                  <option value="A">Week A</option>
+                  <option value="B">Week B</option>
+                  <option value="1">Week 1</option>
+                  <option value="2">Week 2</option>
+                  <option value="3">Week 3</option>
+                  <option value="4">Week 4</option>
+                  <option value="5">Week 5</option>
+                  <option value="6">Week 6</option>
+                  <option value="7">Week 7</option>
+                  <option value="8">Week 8</option>
+                  <option value="9">Week 9</option>
+                </select>
+            </div>
+
+            <br> <hr> <br>
+
+            <p>How satisfied were you with the training this week?<span style="color:red">*</span></p>
+            <div class="d-flex justify-content-center" id="satisfactionQuestion">
+              <p style="margin-top: 9px; margin-right: 10px;">Not Satisfied</p>
+              <div class="satisfactionQuestionGroup form-check form-check-inline">
+                <input type="radio" name="satisfaction" id="sat1" value="1">
+                <label for="sat1">1</label>
+              </div>
+              <div class="satisfactionQuestionGroup form-check form-check-inline">
+                <input type="radio" name="satisfaction" id="sat2" value="2">
+                <label for="sat2">2</label>
+              </div>
+              <div class="satisfactionQuestionGroup form-check form-check-inline">
+                <input type="radio" name="satisfaction" id="sat3" value="3">
+                <label for="sat3">3</label>
+              </div>
+              <div class="satisfactionQuestionGroup form-check form-check-inline">
+                <input type="radio" name="satisfaction" id="sat4" value="4">
+                <label for="sat4">4</label>
+              </div>
+              <div class="satisfactionQuestionGroup form-check form-check-inline">
+                <input type="radio" name="satisfaction" id="sat5" value="5">
+                <label for="sat5">5</label>
+              </div>
+              <p style="margin-top: 9px; margin-left: 10px;">Very Satisfied</p>
             </div>
           
             <br> <hr> <br>
@@ -104,9 +166,7 @@
             </div>
 
             <br><br>
-            <button type="button" class="btn-lg btn-custom">Submit</button>
-
-
+            <button type="button" class="btn btn-lg btn-custom">Submit</button>
         </div>
 
 </body>
