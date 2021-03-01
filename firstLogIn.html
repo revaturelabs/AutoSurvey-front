@@ -18,7 +18,7 @@
         <!-- Custom Styling -->
         <link href="style.css" rel="stylesheet">
 </head>
-<body>
+<body class="">
 
      <!-- Navigation -->
      <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top py-0">
@@ -32,22 +32,36 @@
         <div class="container-fluid" style="background-color: #dadada; border-color: #474c55; border-width:2px; border-style: solid; border-radius:25px; padding:5rem; margin-top:5%">
         
             <div class="row justify-content-center padding">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-4 display-7">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 display-7">
                     Hello, [insert user name/email], since this is your first time logging in, you need to set your password.
                 </div>
             </div>
             <div class="row justify-content-center padding">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-4 align-self-center padding">
-                    <form class="form">
-                        <input id="newPasswordInput" type="password" class="form-control" style="padding:5px" placeholder="Password">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 align-self-center padding">
+                    <form class="needs-validation" novalidate>
+                        <input id="newPasswordInput" type="password" class="form-control" style="padding:5px" placeholder="Password" minlength="8" maxlength="20" required>
+                        <div class='invalid-feedback'>Please enter a password between 8-20 characters following the guides below.</div>
                         <br/>
-                        <input id="newPasswordInput" type="password" class="form-control" style="padding:5px" placeholder="Re-type Password">
+                        <input id="checkPasswordInput" type="password" class="form-control" style="padding:5px" placeholder="Re-type Password" area-described-by="passHelp" minlength="8" maxlength="20" required>
+                        <div class='invalid-feedback'>Passwords must match.</div>
+                        <small id="passHelp form-text text-muted">
+                            <ul>
+                                <li>Your password:</li>
+                                <ul>
+                                    <li>must be 8-20 characters long</li>
+                                    <li>must contain letters and numbers</li>
+                                    <li>must NOT contain spaces</li>
+                                    <li>must NOT contain special characters or emojis</li>
+                                </ul>
+                                
+                            </ul>
+                        </small>
                     </form>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-4 align-self-center">
-                    <button class="btn btn-custom form-control" type="submit">Set Password</button>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 align-self-center">
+                    <button class="btn btn-custom form-control" type="submit" onclick="inputValidate()">Set Password</button>
                 </div>
             </div>
         </div>
@@ -55,4 +69,77 @@
     
 
 </body>
+
+<script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    function inputValidate() {
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        console.log(forms);
+    
+        // Loop over them and prevent submission if invalid
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            console.log(form);
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated')
+            }, false);
+    }
+
+    // Function to run when user presses 'Set Password' button
+
+    function login() {
+        //collecting user inputs
+        let password = document.getElementById('newPasswordInput').value;
+
+        let passwordCheck = document.getElementById('checkPasswordInput').value;
+
+        console.log(password + "\n" + passwordCheck);
+
+        // check to make sure passwords match
+        if (password == passwordCheck) {
+            // create object of password (and email?) -  how will we know who the user is?
+            let user = {
+                email : "email",
+                password : password 
+            }
+
+            // console check
+            console.log(user)
+            console.log(JSON.stringify(user));
+
+            // restful enpoint tbd
+            let url = "";
+            // send AJAX call to pback end to create a new user 
+
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.open("POST", url, true);
+
+            xhttp.setRequestHeader('Content-Type', 'application/json');
+
+            xhttp.send(JSON.stringify(user));
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+
+                    // Alert that they've been registered? Or simply take them to the index? 
+                    window.location.assign('index.html');
+                }
+            }
+        }
+
+
+
+    }
+
+
+
+</script>
 </html>
