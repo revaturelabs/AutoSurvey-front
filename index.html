@@ -16,9 +16,10 @@
         crossorigin="anonymous"></script>
 
         <!-- Custom Styling -->
-        <link href="style.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet"> 
 </head>
-<body>
+
+<body class="body-bg">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top py-0">
@@ -27,49 +28,41 @@
         </div>
     </nav>
 
+    <div class="d-flex h-90 align-items-center" style="margin-top:8%;">
+        <div class="container">
+            <div class="row text-center justify-content-center">
 
-    <!-- Login/QC Survey Link -->
-    <div class="container">
-        <div class="container-fluid" style="background-color: #dadada; border-color: #474c55; border-width:2px; border-style: solid; border-radius:25px; padding:5rem; margin-top:5%">
-        <div class="row align-items-center">
-            <div class="col d-flex justify-content-center" style="padding-top: 6%; border-right-color:#474C55; border-right-width:2px; border-right-style:solid;">
-                <h1 style="color: #474C55">Associates</h1>
-            </div>
-            <div class="col d-flex justify-content-center" style="padding-top: 5%">
-                <h1 style="color: #474C55">QC Team</h1>
-            </div>
-        </div>
+                <!-- Associates Panel/Survey Link -->
+                <div class="col-md-8 col-xl-6 col-sm-12 col-xs-12 bubble" style="width: 500px;">
+                    <h1 class="display-4" style="padding-bottom:10px;">Associates</h1>
+                    <p class="lead">Give feedback on last week's training.</p>
+                    <hr class="my-4">
+                    <br>
+                    <button class="btn btn-lg btn-custom" onclick="window.location.href='survey.html'" style="height:auto; margin-top:25px;">Take the QC Survey</button> 
+                    <br>
+                    <br>
+                </div>
 
-        <!-- <div class="row">
-            <div class="col d-flex justify-content-center" style="border-right-color:#474C55; border-right-width:2px; border-right-style:solid;">
-            </div>
-            <div class="col d-flex justify-content-center" style="padding-top: 5px">
-                    <h3>Log In</h3>
-            </div>
-        </div> -->
-        
-        <div class="row">
-            <div class="col d-flex justify-content-center" style="border-right-color:#474C55; border-right-width:2px; border-right-style:solid;">
-                <button class="btn btn-lg btn-custom" style="margin-top: 20px;" onclick="location.href='survey.html'">Take the QC Survey</button>
-            </div>
-            <div class="col d-flex justify-content-center" style="margin-bottom: 15px;">
-                    <form class="form">
-                        <input style="padding:5px; margin-bottom:5px; width:300px" type="text" id="inputUsername" placeholder="Email Address" required>
-                        <br>
-                        <input style="padding:5px; margin-top:5px; width: 300px;" type="password" id="inputPassword" placeholder="Password" required>
-                    </form>
-            </div>
-        </div>
+                <!-- QC Panel/Login -->
+                <div class="col-md-8 col-xl-6 offset-xl-1 col-sm-12 col-xs-12 bubble" style="width: 500px;">
+                    <h1 class="display-4" style="padding-bottom:10px;">QC Team</h1>
+                    <p class="lead">View survey analytics & upload data.</p>
+                    <hr class="my-4">
+                    <div class="text-center">
+                        <form class="form" style="margin:auto; max-width: 360px;">
+                            <input style="margin-bottom:10px; border-radius:5px; border-color:#474c5583; border-style:solid;" type="text" id="email" class="form-control" placeholder="Email" required>
+                            <input type="password" style="border-radius:5px; border-color:#474c557a; border-style:solid;" id="password" class="form-control" placeholder="Password" required>
+                        </form>
+                    </div>
+                    <br>
+                    <button class="btn btn-lg btn-custom" style="width: 200px; height:auto;" onclick="login()">Log In</button>
+                </div>
 
-        <div class="row">
-            <div class="col d-flex justify-content-center" style="height: 130px; border-right-color:#474C55; border-right-width:2px; border-right-style:solid;">
-            </div>
-            <div class="col d-flex justify-content-center">
-                <button class="btn btn-lg btn-custom" style="width: 200px;" onclick="login()">Log In</button>
             </div>
         </div>
     </div>
-    </div>
+    <br>
+ 
     
 </body>
 </html>
