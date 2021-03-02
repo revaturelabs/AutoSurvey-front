@@ -46,7 +46,7 @@
                             pattern="(?!.* )(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,20}" required>
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="button" id="eye1">
-                                    <i class="fa fa-eye"></i>
+                                    <i class="fa fa-eye-slash"></i>
                                 </button>
                             </div>
                             <div class='invalid-feedback'>Please enter a password between 8-20 characters following the guides below.</div>
@@ -58,14 +58,14 @@
                                 area-described-by="passHelp" minlength="8" maxlength="20" pattern="(?!.* )(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,20}" data-toggle="password" required>
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="button" id="eye2">
-                                        <i class="fa fa-eye"></i>
+                                        <i class="fa fa-eye-slash"></i>
                                     </button>
                                 </div>
                                 <div class='invalid-feedback'>Passwords must match.</div>
                         </div>
                        
                         <br/>
-                        <small id="passHelp form-text text-muted"> 
+                        <small id="passHelp" class="form-text text-muted"> 
                             <ul>
                                 <li>Your password:</li>
                                 <ul>
@@ -103,17 +103,19 @@
     let eye2 = document.getElementById("eye2");
     eye2.addEventListener("click", togglePasswordCheck)
 
-    function togglePasswordNew(eye) {
+    function togglePasswordNew() {
         // get input field
         let type = document.getElementById('newPasswordInput');
         // if the type of input is password, change to text and vice versa
         if (type.getAttribute('type') == 'password') { 
             console.log("changing input type");
-            type.setAttribute('type', 'text');
+            type.setAttribute('type', 'text'); 
+            eye1.children[0].classList.replace('fa-eye-slash', 'fa-eye')
         }
         else if (type.getAttribute('type') == 'text') {
             console.log("changing input type");
             type.setAttribute('type', 'password');
+            eye1.children[0].classList.replace('fa-eye', 'fa-eye-slash');
         }
     }
 
@@ -124,10 +126,12 @@
         if (type.getAttribute('type') == 'password') { 
             console.log("changing input type");
             type.setAttribute('type', 'text');
+            eye2.children[0].classList.replace('fa-eye-slash', 'fa-eye');
         }
         else if (type.getAttribute('type') == 'text') {
             console.log("changing input type");
             type.setAttribute('type', 'password');
+            eye2.children[0].classList.replace('fa-eye', 'fa-eye-slash');
         }
     }
 
@@ -157,8 +161,10 @@
 
     function setPassword() {
         let user = {};
-        let url = "firstLogin.html?firstName=Nicholas&lastName=Rens&email=nicholasrens@test.net";
+        let url = window.location.href;
+        console.log("URL: " + url);
         let queryParams = new URLSearchParams((url.split("?")[1]));
+        console.log("queryParams: " + queryParams);
         for (let query of queryParams) {
             console.log(query);
             user[query[0]] = query[1];
