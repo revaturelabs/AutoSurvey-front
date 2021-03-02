@@ -96,7 +96,14 @@
         </div>
 </body>
 <script>
+    function isValidEmail(email) {
+        var regex = /^([a-zA-Z0-9])+\@(([a-zA-Z0-9])+\.)+([a-zA-Z0-9])+/;
+        return regex.test(email);
+    }
+
     function registerEmployee() {
+        document.getElementById("warning").innerHTML = " ";
+
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
         let email = document.getElementById("email").value;
@@ -110,6 +117,11 @@
             return;
         }
 
+        if(!isValidEmail(email)){
+            document.getElementById("warning").innerHTML = "Not a valid email";
+            return;
+        }
+
         let newUser = {
             "first_name": firstName,
             "last_name": lastName,
@@ -120,24 +132,6 @@
         let value = element.innerHTML;
         element.innerHTML = value + " \n" + `firstLogin.html?firstName=${firstName}&lastName=${lastName}&email=${email}`;
         $("#addUserModal").modal("show");
-
-        let xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200){
-                // let response = JSON.parse(this.responseText);
-                // console.log(response);
-                $("#newUserLink").innerHTML = `firstLogin.html?firstName=${firstName}&lastName=${lastName}&email=${email}`;
-                $("#addUserModal").modal("show");
-            }
-            
-        }
-        
-        let url = ``;
-    
-        xhttp.open("GET", url, true);
-        xhttp.setRequestHeader('Content-Type', 'application/json');
-        xhttp.send(JSON.stringify(newUser));
     }
 </script>
 </html>
