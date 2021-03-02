@@ -25,7 +25,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>        
 
         <!-- JQuery Datepicker-->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css"    />
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
             $( function() {
@@ -74,16 +74,16 @@
 
                 <div class="row">
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-date" role="tabpanel" aria-labelledby="nav-date-tab">
-                            <div id="datepicker"></div>
+                        <div class="tab-pane fade show active" id="nav-date" role="tabpanel" aria-labelledby="nav-date-tab" style="text-align:center">
+                            <div id="datepicker" style="display:inline-block"></div>
                         </div>
                         <div class="tab-pane fade" id="nav-batch" role="tabpanel" aria-labelledby="nav-batch-tab">
                             <select class="form-control" style="width:100%;font-size: x-large;">
                                 <option data-rate="0" value="" selected>Select Location</option>
-                            </select><br><br><br>
+                            </select><br><br>
                             <select class="form-control" style="width:100%;font-size: x-large;">
                                 <option data-rate="0" value="" selected>Select Batch</option>
-                            </select><br><br><br>
+                            </select><br><br>
                             <select class="form-control" style="width:100%;font-size: x-large;">
                                 <option data-rate="0" value="" selected>Select Week</option>
                             </select><br>
