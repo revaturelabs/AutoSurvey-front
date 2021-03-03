@@ -30,6 +30,8 @@ function checkUser(){
         var user = getCookie("username");
         if (user != null && user != "" && user != undefined){
             checkAdminStatus();
+        }else if(user = null || user == "" || user == undefined){
+            window.location.href="index.html";
         }else{
             return;
         }
