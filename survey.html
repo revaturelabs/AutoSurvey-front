@@ -48,7 +48,7 @@
           }
         </style>
 </head>
-<body class="body-bg">
+<body class="body-bg" onload="populateLocations()">
         <!-- Navigation -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top py-0">
             <div class="container-fluid">
@@ -335,6 +335,48 @@
 </body>
 
 <script>
+
+  function populateBatches(){
+    let xhttp = new XMLHttpRequest();
+    var locationSelect = document.getElementById("location");
+
+    xhttp.onreadystatechange = function () {
+      if(this.readyState == 4 && this.status == 200){
+        for(i = 0; i < this.responseText.length; i++){
+          let batch = this.responseText[i];
+          var option = document.createElement("option");
+          option.value = batch.name;
+          option.text = batch.skill + " - " + batch.employeeAssignments.employee.firstName + " " + batch.employeeAssignments.employee.lastName;
+          locationSelect.add(option);
+        }
+      }
+    }
+
+    xhttp.open("GET", "https://caliber2-mock.revaturelabs.com:443/mock/training/batch/current", true);
+    xhttp.setRequestHeader("Accept", "*/*");
+    xhttp.send();
+  }
+
+  function populateLocations(){
+    let xhttp = new XMLHttpRequest();
+    var batchSelect = document.getElementById("batch");
+
+    xhttp.onreadystatechange = function () {
+      if(this.readyState == 4 && this.status == 200){
+        for(i = 0; i < this.responseText.length; i++){
+          let location = this.responseText[i];
+          let option = document.createElement("option");
+          option.value = location;
+          option.text = location;
+          batchSelect.add(option);
+        }
+      }
+    }
+
+    xhttp.open("GET", "https://caliber2-mock.revaturelabs.com:443/mock/training/batch/locations", true);
+    xhttp.setRequestHeader("Accept", "*/*");
+    xhttp.send();
+  }
   // Note for whoever does the JS for this:
 
   // For the radio buttons, something like the following should 
