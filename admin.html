@@ -50,32 +50,34 @@
             </div>
         </nav>
     
-        <div class="container bubble">
-            <div class="mx-auto" style="width: 250px;">
-                <div class="align-self-center">
-                    <p>Enter information of a new user you would like to create</p>
-                </div>
-                
-                <div class="align-self-center padding">
-                    <input type="text" id="firstName" placeholder="First Name" autocomplete="off">
-                </div>
-
-                <div class="align-self-center padding">
-                    <input type="text" id="lastName" placeholder="Last Name" autocomplete="off">
-                </div>
-
-                <div class="align-self-center padding">
-                    <input type="text" id="email" placeholder="Email" autocomplete="off">
-                </div>
-
-                <div class="align-self-center padding">
-                    <button onclick="registerEmployee()" class="btn btn-lg btn-custom" style="width: 196px;" id="register">Register Employee</button>
-                </div>
-
+        <div class="container bubble" style="margin-top: 2%; width: 800px;">
+            <div class="d-flex justify-content-center">
+                <h1>Create QC Account</h1>
             </div>
-            <div class="mx-auto" style="width: 550px;">
-                <h3 id="warning" style="color: red;"></h3>
+            <hr>
+            <br>
+            <div class="d-flex justify-content-center">
+                <p>Please enter the QC member's information below:</p>
             </div>
+            <div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+                <input class="form-control" style="border-color: black; border-color:#474c5583; width: 300px;" type="text" id="firstName" placeholder="First Name" autocomplete="off">
+            </div>
+            <div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+                <input class="form-control" style="border-color: black; border-color:#474c5583; width: 300px;" type="text" id="lastName" placeholder="Last Name" autocomplete="off">
+            </div>
+            <div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+                <input class="form-control" style="border-color: black; border-color:#474c5583; width: 300px;" type="text" id="email" placeholder="Email" autocomplete="off">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <h5 id="warning" style="color: red; margin-bottom: 15px;"></h3>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button onclick="registerEmployee()" class="btn btn-lg btn-custom" style="width: 196px;" id="register">Register Employee</button>
+            </div>
+
+
         </div>
 
         <div class="modal fade" id="addUserModal" tabindex="-1" ara-labelledby="uploadModalLabel" aria-hidden="true">
@@ -86,17 +88,24 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="modal-body" id="uploadModalBody">Please provide this link to the person this account was created for: </p>
+                        <p class="modal-body" id="uploadModalBody">Please provide the following link to the employee this account was created for: </p>
                     </div>
                     <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-secondary" onclick="window.location.reload()" aria-label="Upload Another CSV">Add another User</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.location.reload()" aria-label="Upload Another CSV">Add Another User</button>
                     </div>
                 </div>
             </div>
         </div>
 </body>
 <script>
+    function isValidEmail(email) {
+        var regex = /^([a-zA-Z0-9])+\@(([a-zA-Z0-9])+\.)+([a-zA-Z0-9])+/;
+        return regex.test(email);
+    }
+
     function registerEmployee() {
+        document.getElementById("warning").innerHTML = " ";
+
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
         let email = document.getElementById("email").value;
@@ -106,7 +115,12 @@
         console.log(email);
 
         if(!firstName || !lastName || !email){
-            document.getElementById("warning").innerHTML = "You must fill out each section to continue";
+            document.getElementById("warning").innerHTML = "You must fill out every section to continue.";
+            return;
+        }
+
+        if(!isValidEmail(email)){
+            document.getElementById("warning").innerHTML = "You have entered an invalid email address.";
             return;
         }
 
@@ -118,26 +132,8 @@
         
         let element = document.getElementById("uploadModalBody");
         let value = element.innerHTML;
-        element.innerHTML = value + " \n" + `firstLogin.html?firstName=${firstName}&lastName=${lastName}&email=${email}`;
+        element.innerHTML = value + `\n firstLogin.html?firstName=${firstName}&lastName=${lastName}&email=${email}`;
         $("#addUserModal").modal("show");
-
-        let xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200){
-                // let response = JSON.parse(this.responseText);
-                // console.log(response);
-                $("#newUserLink").innerHTML = `firstLogin.html?firstName=${firstName}&lastName=${lastName}&email=${email}`;
-                $("#addUserModal").modal("show");
-            }
-            
-        }
-        
-        let url = ``;
-    
-        xhttp.open("GET", url, true);
-        xhttp.setRequestHeader('Content-Type', 'application/json');
-        xhttp.send(JSON.stringify(newUser));
     }
 </script>
 </html>
