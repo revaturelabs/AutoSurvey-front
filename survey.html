@@ -56,7 +56,7 @@
             </div>
         </nav>
 
-        <div class="container bubble" style="width:800px;">
+      <div class="container bubble" style="margin-top: 2%; width:800px;">
 
         <div class="d-flex justify-content-center">
           <h1 class="display-4" style="padding-bottom:10px; padding-top: 10px;">Training Feedback</h1>
@@ -73,6 +73,8 @@
         </div>
 
         <br><hr><br>
+
+        <form>
 
             <div id="emailQuestion">
                 <div class="mb-3">
@@ -323,8 +325,12 @@
               </div>
             </div>
 
-            <button type="button" class="btn btn-lg btn-custom">Submit</button>
-        </div>
+            <button id="submitSurvey" type="button" class="btn btn-lg btn-custom">Submit</button>
+
+          </form>
+      </div>
+
+
 
 </body>
 
@@ -332,10 +338,10 @@
   // Note for whoever does the JS for this:
 
   // For the radio buttons, something like the following should 
-  // theoretically pull the correct value selected even though they aren't in forms:
+  // theoretically pull the correct value selected even though they aren't in individual forms:
 
   //document.querySelector('input[name="understanding"]:checked').value;
-  //document.querySelector('input[name="genderS"]:checked').value;
+  //document.querySelector('input[name="questionsEncouraged"]:checked').value;
 
 </script>
 

@@ -17,11 +17,6 @@
 
         <!-- Custom Styling -->
         <link href="style.css" rel="stylesheet"> 
-
-        <script
-			  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-			  crossorigin="anonymous"></script>
 </head>
 
 <body class="body-bg">
@@ -57,55 +52,54 @@
                         <form class="form" style="margin:auto; max-width: 360px;">
                             <input style="margin-bottom:10px; border-radius:5px; border-color:#474c5583; border-style:solid;" type="text" id="email" class="form-control" placeholder="Email" required>
                             <input type="password" style="border-radius:5px; border-color:#474c557a; border-style:solid;" id="password" class="form-control" placeholder="Password" required>
+                            <br>
+                            <button class="btn btn-lg btn-custom" style="width: 200px; height:auto;" onclick="login()">Log In</button>
                         </form>
                     </div>
-                    <br>
-                    <button class="btn btn-lg btn-custom" style="width: 200px; height:auto;" onclick="login()">Log In</button>
+                    
+                    
                 </div>
 
             </div>
         </div>
     </div><br><br>
 
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title">Uh-oh!</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="modal-body" id="loginModalBody">An account with that information could not be found.</p>
-                </div>
-            </div>
-        </div>
-    </div>
- 
     
 </body>
 
 <script>
     function login(){
-        let email = document.getElementById('email').value;
-        let password = document.getElementById('password').value;
 
-        $('loginModal').modal('show');
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+
+    var date = new Date();
+
+    document.cookie="username=" + email;
+    document.cookie="admin=false";
+    document.cookie="SameSite=lax";
+    document.cookie="expires=" + (date.getTime() + 86400000);
+
+    window.location.href="analysis.html";
+
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            let user = JSON.parse(this.responseText);
+            document.cookie = "username=" + user.email;
+            document.cookie = "admin=" + user.admin;
+            document.cookie = "path=/";
+            document.cookie = "SameSite=lax";
+            window.location.href = "analysis.html";
+        }else{
+            window.alert("An account with that information could not be found.\nPlease try again or contact an administrator for access.");
         }
-    //     let xhttp = new XMLHttpRequest();
-
-    //     xhttp.onreadystatechange = function(){
-    //         if(this.readyState == 4 && this.status == 200){
-    //             window.location.href = "analysis.html";
-    //         }else{
-    //             let modal = document.getElementById("loginModal");
-    //             modal.focus();
-    //         }
-    //     }
+     }
     
+    xhttp.open("GET", "http://localhost:8080/AutoSurvey-back/getUserByEmailAndPassword?email=" + email, true);
 
-    // xhttp.open("GET", "http://the-internet.herokuapp.com/status_codes/500", true);
-
-    // xhttp.send();
+    xhttp.send(password);
     }
     
 </script>
