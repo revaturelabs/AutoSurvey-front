@@ -21,7 +21,7 @@
         <link href="style.css" rel="stylesheet">
 </head>
 
-<body class="body-bg">
+<body class="body-bg" onload="welcome()">
 
      <!-- Navigation -->
      <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top py-0">
@@ -32,12 +32,13 @@
 
     <!-- First Time Logging In - Set Password Notice -->
     <div class="container">
-        <div class="container-fluid" style="background-color: #dadada; border-color: #474c55; border-width:2px; border-style: solid; border-radius:25px; padding:5rem; margin-top:5%">
-        
-            <div class="row justify-content-center padding">
-                <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 display-7">
-                    Hello, [insert user name/email], since this is your first time logging in, you need to set your password.
-                </div>
+        <div class="container-fluid bubble">
+            <div class="d-flex justify-content-center">
+                <h1 style="margin-bottom: 10px;">First Time Login</h1>
+            </div>
+            <br><hr><br>
+            <div class="d-flex justify-content-center">
+                <p id=welcomeMessage></p>
             </div>
             <div class="row justify-content-center padding">
                 <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 align-self-center padding">
@@ -125,6 +126,9 @@
     let eye2 = document.getElementById("eye2");
     eye2.addEventListener("click", togglePasswordCheck)
 
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+
     function togglePasswordNew() {
         // get input field
         let type = document.getElementById('newPasswordInput');
@@ -177,6 +181,12 @@
             }
             form.classList.add('was-validated')
             }, false);
+    }
+
+    // Function to populate the welcome message
+    function welcome(){
+        let welcomeMessage = document.getElementById("welcomeMessage");
+        welcomeMessage.innerHTML = "Hello, " + urlParams.get("firstName") + " " + urlParams.get("lastName") + "! Since this is your first time logging in, you need to set your password."
     }
 
     // Function to run when user presses 'Set Password' button
