@@ -87,8 +87,8 @@
                         <h5 class="modal-title" id="uploadModalLabel">User Creation Status</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <p class="modal-body" id="uploadModalBody">Please provide the following link to the employee this account was created for: </p>
+                    <div class="modal-body" style="white-space: pre-line;">
+                        <p class="modal-body" id="uploadModalBody"></p>
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-secondary" onclick="window.location.reload()" aria-label="Upload Another CSV">Add Another User</button>
@@ -98,8 +98,10 @@
         </div>
 </body>
 <script>
+
+    let url = "file:///C:/Revature/Training/AutoSurvey-front/AutoSurvey-front/"
     function isValidEmail(email) {
-        var regex = /^([a-zA-Z0-9])+\@(([a-zA-Z0-9])+\.)+([a-zA-Z0-9])+/;
+        var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;;
         return regex.test(email);
     }
 
@@ -131,8 +133,7 @@
         }
         
         let element = document.getElementById("uploadModalBody");
-        let value = element.innerHTML;
-        element.innerHTML = value + `\n firstLogin.html?firstName=${firstName}&lastName=${lastName}&email=${email}`;
+        element.innerHTML = "Please provide the following link to the employee this account was created for:\n \n" + url + `firstLogin.html?firstName=${firstName}&lastName=${lastName}&email=${email}`;
         $("#addUserModal").modal("show");
     }
 </script>

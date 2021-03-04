@@ -24,7 +24,7 @@
 
 </head>
 
-<body class="body-bg" onload="checkUser()">
+<body class="body-bg">
 
 
     <!-- Navigation -->
@@ -46,7 +46,7 @@
                         <a class="nav-link active" href="upload.html" id="navbarUpload">Upload</a>
                     </li>
                     <li class="nav-item ms-auto">
-                        <a class="nav-link hidden" href="admin.html" id="navbarAdmin">Admin</a>
+                        <a class="nav-link" href="admin.html" id="navbarAdmin">Admin</a>
                     </li>
                 </ul>
             </div>
@@ -138,7 +138,7 @@
             console.log("Responses JSON:");
             console.log(JSON.stringify(responses));
 
-            // put AJAX call here *****************************************************************
+            // check HTML in back end under test for what to put here
         };
         fr.readAsText(file);
 

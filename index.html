@@ -38,7 +38,7 @@
                     <p class="lead">Give feedback on last week's training.</p>
                     <hr class="my-4">
                     <br>
-                    <button class="btn btn-lg btn-custom" onclick="window.location.href='survey.html'" style="height:auto; margin-top:25px;">Take the QC Survey</button> 
+                    <button class="btn btn-lg btn-custom" id="surveyButton" onclick="window.location.href='survey.html'" style="height:auto; margin-top:25px;">Take the QC Survey</button> 
                     <br>
                     <br>
                 </div>
@@ -53,7 +53,7 @@
                             <input style="margin-bottom:10px; border-radius:5px; border-color:#474c5583; border-style:solid;" type="text" id="email" class="form-control" placeholder="Email" required>
                             <input type="password" style="border-radius:5px; border-color:#474c557a; border-style:solid;" id="password" class="form-control" placeholder="Password" required>
                             <br>
-                            <button class="btn btn-lg btn-custom" style="width: 200px; height:auto;" onclick="login()">Log In</button>
+                            <button class="btn btn-lg btn-custom" id="loginButton" style="width: 200px; height:auto;" onclick="login()">Log In</button>
                         </form>
                     </div>
                     
@@ -76,9 +76,9 @@
     var date = new Date();
 
     document.cookie="username=" + email;
-    document.cookie="admin=false";
+    document.cookie="admin=true";
     document.cookie="SameSite=lax";
-    document.cookie="expires=" + (date.getTime() + 86400000);
+
 
     window.location.href="analysis.html";
 
@@ -90,6 +90,7 @@
             document.cookie = "username=" + user.email;
             document.cookie = "admin=" + user.admin;
             document.cookie = "path=/";
+            document.cookie = "expires=" + (date.getTime() + 86400000);
             document.cookie = "SameSite=lax";
             window.location.href = "analysis.html";
         }else{
@@ -97,7 +98,7 @@
         }
      }
     
-    xhttp.open("GET", "http://localhost:8080/AutoSurvey-back/getUserByEmailAndPassword?email=" + email, true);
+    xhttp.open("GET", "http://localhost:8080/AutoSurvey/getUserByEmail?email=" + email, true);
 
     xhttp.send(password);
     }
