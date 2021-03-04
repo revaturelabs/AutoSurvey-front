@@ -31,11 +31,11 @@ function checkUser(){
         if (user != null && user != "" && user != undefined){
             checkAdminStatus();
         }else if(user = null || user == "" || user == undefined){
-            window.location.href="index.html";
+            window.location.href="redirect.html";
         }else{
             return;
         }
     }catch(TypeError){
-        window.location.href="index.html";
+        window.location.href="redirect.html";
     }
 }

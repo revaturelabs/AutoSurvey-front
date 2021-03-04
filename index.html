@@ -78,7 +78,7 @@
     document.cookie="username=" + email;
     document.cookie="admin=true";
     document.cookie="SameSite=lax";
-    document.cookie="expires=" + (date.getTime() + 86400000);
+
 
     window.location.href="analysis.html";
 
@@ -90,6 +90,7 @@
             document.cookie = "username=" + user.email;
             document.cookie = "admin=" + user.admin;
             document.cookie = "path=/";
+            document.cookie = "expires=" + (date.getTime() + 86400000);
             document.cookie = "SameSite=lax";
             window.location.href = "analysis.html";
         }else{
@@ -97,7 +98,7 @@
         }
      }
     
-    xhttp.open("GET", "http://localhost:8080/getUserByEmail?email=" + email, true);
+    xhttp.open("GET", "http://localhost:8080/AutoSurvey/getUserByEmail?email=" + email, true);
 
     xhttp.send(password);
     }

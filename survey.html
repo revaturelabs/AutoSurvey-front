@@ -325,6 +325,8 @@
               </div>
             </div>
 
+            <br><hr><br>
+
             <button id="submitSurvey" type="button" class="btn btn-lg btn-custom">Submit</button>
 
           </form>
@@ -336,35 +338,53 @@
 
 <script>
 
+  var questions = [
+    
+  ]
+
   function populateBatches(){
     let xhttp = new XMLHttpRequest();
-    var locationSelect = document.getElementById("location");
-
+    var locationSelect = document.getElementById("batch");
     xhttp.onreadystatechange = function () {
       if(this.readyState == 4 && this.status == 200){
-        for(i = 0; i < this.responseText.length; i++){
-          let batch = this.responseText[i];
+        var batches = JSON.parse(this.responseText);
+        console.log(batches);
+        for(i = 0; i < batches.length; i++){
+          let batch = batches[i];
           var option = document.createElement("option");
           option.value = batch.name;
           option.text = batch.skill + " - " + batch.employeeAssignments.employee.firstName + " " + batch.employeeAssignments.employee.lastName;
-          locationSelect.add(option);
+          batchSelect.add(option);
         }
       }
     }
 
     xhttp.open("GET", "https://caliber2-mock.revaturelabs.com:443/mock/training/batch/current", true);
+    xhttp.setRequestHeader("Content-Type","application/json")
     xhttp.setRequestHeader("Accept", "*/*");
     xhttp.send();
   }
 
   function populateLocations(){
     let xhttp = new XMLHttpRequest();
-    var batchSelect = document.getElementById("batch");
+    var locationSelect = document.getElementById("location");
+
+    /*----------------------------------*/
+    // var locations = JSON.parse(`["Arlington","New York","Reston","West Virginia","Tampa"]`);
+    // for(i = 0; i < locations.length; i++){
+    //   let location = locations[i];
+    //   let option = document.createElement("option");
+    //   option.value = location;
+    //   option.text = location;
+    //   locationSelect.add(option);
+    // }
+    /*---------------------------------*/
 
     xhttp.onreadystatechange = function () {
       if(this.readyState == 4 && this.status == 200){
+        var locations = JSON.parse(this.responseText);
         for(i = 0; i < this.responseText.length; i++){
-          let location = this.responseText[i];
+          let location = locations[i];
           let option = document.createElement("option");
           option.value = location;
           option.text = location;
@@ -374,9 +394,12 @@
     }
 
     xhttp.open("GET", "https://caliber2-mock.revaturelabs.com:443/mock/training/batch/locations", true);
+    xhttp.setRequestHeader("Content-Type","application/json")
     xhttp.setRequestHeader("Accept", "*/*");
     xhttp.send();
   }
+
+
   // Note for whoever does the JS for this:
 
   // For the radio buttons, something like the following should 
